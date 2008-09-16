@@ -1,0 +1,39 @@
+This file contains message digests of all files listed in MANIFEST,
+signed via the Module::Signature module, version 0.55.
+
+To verify the content in this distribution, first make sure you have
+Module::Signature installed, then type:
+
+    % cpansign -v
+
+It will check each file's integrity, as well as the signature's
+validity.  If "==> Signature verified OK! <==" is not displayed,
+the distribution may already have been compromised, and you should
+not run its Makefile.PL or Build.PL.
+
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+SHA1 36c5c2168924fa7b98476dc9dfb9b5faee97183d Changes
+SHA1 7e9db050c03686a005cf75d49d6233e2df841ad8 MANIFEST
+SHA1 cf84467d1420b23764021e0018ce94f21c5b6f69 MANIFEST.SKIP
+SHA1 f036eb02fc78dbbde5a1ae1ac156377bc032cd00 META.yml
+SHA1 e8116c70aeb6655a7ccedda0469a93127b3d3d20 Makefile.PL
+SHA1 f640a6cae398ae6baa59ebe32e46354afd13699b README
+SHA1 9613488d4903727383230fa48263a86139dbe445 examples/dyndns.pl
+SHA1 fb12ecefee1cb9b6c70f9af94a9ef1bfe047ffc8 examples/list_records.pl
+SHA1 8e2a193427542ee1c312fd8913777ffcc9b8bdf6 lib/WebService/Linode.pm
+SHA1 87a27ec44348bab9e1ec6d6c36e0f67212da4919 lib/WebService/Linode/DNS.pm
+SHA1 8866d3664ac2cc07c67ee69c262f018ea59833dc t/00-load.t
+SHA1 4a8fced49b38fa24ca471af0bddec05281eb8569 t/01-domains.t
+SHA1 9701c2e3c0220b656ecd82005b6abf5843c3dbc1 t/boilerplate.t
+SHA1 0b1c5a2d59be6bfa7d60c64cd964fea6a0331705 t/pod-coverage.t
+SHA1 640935336dc1123c0069bcf5432bcaedc2cf22d3 t/pod.t
+SHA1 380b016bbb9f219b7677ac58037fa21fbb90282c t/signature.t
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.4.7 (Darwin)
+
+iD8DBQFIzwX30Qbp4bPZvesRAq1DAJ0etlxfGbY16LCDIR7Pu4QL50y4GwCfeY58
+cE9wiB7Cjn3sr6g4zCZPdNs=
+=F2HU
+-----END PGP SIGNATURE-----

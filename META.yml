@@ -1,8 +1,8 @@
 --- #YAML:1.0
 name:                WebService-Linode
-version:             0.01
+version:             0.02
 abstract:            Perl Interface to the Linode.com API.
-license:             ~
+license:             perl
 author:              
     - Michael Greb <mgreb@linode.com>
 generated_by:        ExtUtils::MakeMaker version 6.44
