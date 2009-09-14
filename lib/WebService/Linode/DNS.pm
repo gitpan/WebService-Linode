@@ -12,11 +12,11 @@ WebService::Linode::DNS - Perl Interface to the Linode.com API DNS methods.
 
 =head1 VERSION
 
-Version 0.04
+Version 0.05
 
 =cut
 
-our $VERSION = '0.04';
+our $VERSION = '0.05';
 our @ISA = ("WebService::Linode::Base");
 
 sub getDomainIDbyName {
@@ -169,11 +169,20 @@ sub domainResourceList {
 sub domainResourceGet {
 	my ($self, %args) = @_;
 	$self->_debug(10, 'domainResourceGet called');
-	my $domainid;
 
-	unless (exists ($args{resourceid})) {
-		$self->_error(-1, 
-			'Must pass domainid or domain and resourceid domainResourceGet');
+	my $domainid;
+	if ($args{domain}) {
+		$domainid = $self->getDomainIDbyName($args{domain});
+		$self->_error(-1, "$args{domain} not found") unless $domainid;
+		return unless $domainid;
+	}
+	else {
+		$domainid = $args{domainid}
+	}
+
+	unless ( exists( $args{resourceid} ) && exists( $args{domainid} ) ) {
+		$self->_error(-1,
+			'Must pass domain id or domain and resourceid to domainResourceGet');
 		return;
 	}
 
@@ -410,7 +419,7 @@ L<http://search.cpan.org/dist/WebService-Linode>
 
 =head1 COPYRIGHT & LICENSE
 
-Copyright 2008 Linode, LLC, all rights reserved.
+Copyright 2008-2009 Linode, LLC, all rights reserved.
 
 This program is free software; you can redistribute it and/or modify it
 under the same terms as Perl itself.

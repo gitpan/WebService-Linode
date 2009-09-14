@@ -1,6 +1,6 @@
 package WebService::Linode;
 
-require v5.6.0;
+require 5.006000;
 
 use warnings;
 use strict;
@@ -9,7 +9,7 @@ use Carp;
 use List::Util qw(first);
 use WebService::Linode::Base;
 
-our $VERSION = '0.04';
+our $VERSION = '0.05';
 our @ISA     = ("WebService::Linode::Base");
 our $AUTOLOAD;
 
@@ -66,7 +66,9 @@ my %validation = (
     linode_job => {
         list => [ [ 'linodeid' ], [ 'jobid', 'pendingonly' ] ],
     },
-
+    user => {
+        getapikey => [ [ 'username', 'password' ], [] ],
+    },
 );
 
 sub AUTOLOAD {
@@ -147,7 +149,7 @@ WebService::Linode - Perl Interface to the Linode.com API.
 
 =head1 VERSION
 
-Version 0.04
+Version 0.05
 
 =head1 SYNOPSIS
 
@@ -847,6 +849,18 @@ Optional Parameters:
 =item * jobid
 
 =item * pendingonly
+
+=back
+
+=head3 user_getapikey
+
+Required Parameters:
+
+=over 4
+
+=item * username
+
+=item * password
 
 =back
 

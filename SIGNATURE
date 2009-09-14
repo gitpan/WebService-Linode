@@ -14,18 +14,18 @@ not run its Makefile.PL or Build.PL.
 -----BEGIN PGP SIGNED MESSAGE-----
 Hash: SHA1
 
-SHA1 ee0003af0f85b61032be58600f648ec3684cab36 Changes
+SHA1 01043766a0302d5759122e661c148c6d5f4d230e Changes
 SHA1 394aabc5c1a90dc95ff5e5be4bb2b9edb89f0e72 MANIFEST
 SHA1 bab1b2cdee5e29a30116fad6b57168f19c89c15f MANIFEST.SKIP
-SHA1 190068c1e02475332633f63c257a64c3765773bf META.yml
+SHA1 57bcdb243739e673e2e9ddb4eed6d5811b52ee40 META.yml
 SHA1 55a87be8a4dc9fded0b436a7d86100a53354f457 Makefile.PL
-SHA1 52ce76f360f439f5ce12dc01cd9a7196075a4e33 README
+SHA1 288750e260cfc29e66e4e706bc371b713e1f490b README
 SHA1 d5306cb8aa1d3a37d7827046b7aa87daffb7655c TODO
 SHA1 133e2950db285775b5326f9e8a0cb1bdb5b1ecb7 examples/dyndns.pl
 SHA1 723245279bcc836bafc137dfa66fa17fa0d1ae42 examples/list_records.pl
-SHA1 ff78b99c0e7c9304ec323c2f000c06f4b855a2d9 lib/WebService/Linode.pm
-SHA1 74742a2a68a86efe2396f384b67d4a8a159a2fac lib/WebService/Linode/Base.pm
-SHA1 ffd7422b626b8ab88098b41f0011c7b671e9ab56 lib/WebService/Linode/DNS.pm
+SHA1 b8ea708fe7435ba529f8a53a393fccc92c4ae400 lib/WebService/Linode.pm
+SHA1 caa098075e4a081acd690be27a9f99607f359c34 lib/WebService/Linode/Base.pm
+SHA1 9b7e3369b5895dd34f1da2b6730b9a0c568fbbef lib/WebService/Linode/DNS.pm
 SHA1 dd04c320b2135fa372e3f552d98ac2d043b58fdb t/00-load.t
 SHA1 caef327f714c886e259887635bbed0ac60a143cc t/01-domains.t
 SHA1 9701c2e3c0220b656ecd82005b6abf5843c3dbc1 t/boilerplate.t
@@ -35,7 +35,7 @@ SHA1 380b016bbb9f219b7677ac58037fa21fbb90282c t/signature.t
 -----BEGIN PGP SIGNATURE-----
 Version: GnuPG v1.4.9 (Darwin)
 
-iEYEARECAAYFAkqA0HgACgkQ0Qbp4bPZvetzPwCcDxPzlARbq76/emf78hVapvx+
-ItEAnjtWwoMfGRocphltOULasQq62WHk
-=tG7y
+iEYEARECAAYFAkqunrUACgkQ0Qbp4bPZves1nACghbXvB0vXf0UWHLcMaeU4dGDZ
+S20AniQZsyPxmPqisd+91C9Jvnc8yk6N
+=FFjF
 -----END PGP SIGNATURE-----
