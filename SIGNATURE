@@ -1,5 +1,5 @@
 This file contains message digests of all files listed in MANIFEST,
-signed via the Module::Signature module, version 0.55.
+signed via the Module::Signature module, version 0.68.
 
 To verify the content in this distribution, first make sure you have
 Module::Signature installed, then type:
@@ -14,18 +14,18 @@ not run its Makefile.PL or Build.PL.
 -----BEGIN PGP SIGNED MESSAGE-----
 Hash: SHA1
 
-SHA1 01043766a0302d5759122e661c148c6d5f4d230e Changes
+SHA1 a9e7179c0e7f4835406a4f2fe8d41c45a67665fb Changes
 SHA1 394aabc5c1a90dc95ff5e5be4bb2b9edb89f0e72 MANIFEST
 SHA1 bab1b2cdee5e29a30116fad6b57168f19c89c15f MANIFEST.SKIP
-SHA1 57bcdb243739e673e2e9ddb4eed6d5811b52ee40 META.yml
+SHA1 866ea55fe9c2b618abbf3aa8b00cb6c76ee5844d META.yml
 SHA1 55a87be8a4dc9fded0b436a7d86100a53354f457 Makefile.PL
-SHA1 288750e260cfc29e66e4e706bc371b713e1f490b README
+SHA1 b88e5b21faf00f8ac414ebf1d63ec98bdbd8cc98 README
 SHA1 d5306cb8aa1d3a37d7827046b7aa87daffb7655c TODO
-SHA1 133e2950db285775b5326f9e8a0cb1bdb5b1ecb7 examples/dyndns.pl
-SHA1 723245279bcc836bafc137dfa66fa17fa0d1ae42 examples/list_records.pl
-SHA1 b8ea708fe7435ba529f8a53a393fccc92c4ae400 lib/WebService/Linode.pm
-SHA1 caa098075e4a081acd690be27a9f99607f359c34 lib/WebService/Linode/Base.pm
-SHA1 9b7e3369b5895dd34f1da2b6730b9a0c568fbbef lib/WebService/Linode/DNS.pm
+SHA1 d6060cd71bb82dc20692693caba71a02766ee0bb examples/dyndns.pl
+SHA1 3e9ddb7c44f400b7671cacb9c938ba559c419d02 examples/list_records.pl
+SHA1 040d4ed244b5989b54c08436098cfa394ee712ea lib/WebService/Linode.pm
+SHA1 a2e3116ab53f9ea04c397c65725d054d54bdba6e lib/WebService/Linode/Base.pm
+SHA1 eb9fff126faa567487dafd525c573fdd95c3b391 lib/WebService/Linode/DNS.pm
 SHA1 dd04c320b2135fa372e3f552d98ac2d043b58fdb t/00-load.t
 SHA1 caef327f714c886e259887635bbed0ac60a143cc t/01-domains.t
 SHA1 9701c2e3c0220b656ecd82005b6abf5843c3dbc1 t/boilerplate.t
@@ -33,9 +33,13 @@ SHA1 0b1c5a2d59be6bfa7d60c64cd964fea6a0331705 t/pod-coverage.t
 SHA1 640935336dc1123c0069bcf5432bcaedc2cf22d3 t/pod.t
 SHA1 380b016bbb9f219b7677ac58037fa21fbb90282c t/signature.t
 -----BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.4.9 (Darwin)
+Version: GnuPG v1.4.10 (GNU/Linux)
 
-iEYEARECAAYFAkqunrUACgkQ0Qbp4bPZves1nACghbXvB0vXf0UWHLcMaeU4dGDZ
-S20AniQZsyPxmPqisd+91C9Jvnc8yk6N
-=FFjF
+iQEcBAEBAgAGBQJPDysKAAoJECL4cAGE6i9ncmIH/3yNmPW9CicLdoGeTizKNpHh
+TN6ZC2h4G4Svi8XmBmOdw10x/hR66oFAP2g9+J3oeIgioKHQwzMx0+CcDpG2gsSk
+g7Hlrj1ivo7Lq+kuoc2OnoO7Voy5T5jtudnzNS46Iu13iBDjumgDd9BTequbnEI/
+4NOsdyTAyiVuf/ucnffR8YcE+0vohMKUhP2rpHM4jV/hbpHJhdzaSrsuweYJ+APm
+GzQ3CzZmBbxTt3i0zvlqVoUj1so/K89Qm33QsmXf1NdscRseKMiyS1t/jzJxAXIS
+h7e33/nZqjTWVR4ndTa+y/HlcEFYxNg3yQWI/joE/jIbYFDwVlY/IqgoDhTXpW8=
+=33SL
 -----END PGP SIGNATURE-----

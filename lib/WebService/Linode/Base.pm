@@ -15,11 +15,11 @@ WebService::Linode::Base - Perl Interface to the Linode.com API.
 
 =head1 VERSION
 
-Version 0.05
+Version 0.06
 
 =cut
 
-our $VERSION = '0.05';
+our $VERSION = '0.06';
 our $err;
 our $errstr;
 
@@ -132,8 +132,8 @@ Example usage:
 
 	use WebService::Linode::Base;
 
-	my $api = new WebService::Linode(apikey => 'mmmcake');
-	my $data = $api->do_request( action => 'domains.list' );
+	my $api = WebService::Linode::Base->new(apikey => 'mmmcake');
+	my $data = $api->do_request( api_action => 'domains.list' );
 
 =head1 METHODS
 
@@ -147,7 +147,7 @@ Accepts a hash as an argument.  apikey is the only required parameter
 specifying your Linode API key.
 
 Errors mirror the perl DBI error handling method.
-$WebService::Linode::err and ::errstr will be populated with the last error
+$WebService::Linode::Base::err and ::errstr will be populated with the last error
 number and string that occurred.  All errors generated within the module
 are currently error code -1.  By default, will warn on errors as well, pass
 a true value for fatal to die instead, or nowarn to prevent the warnings.

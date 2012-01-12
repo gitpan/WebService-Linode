@@ -9,7 +9,7 @@ use Carp;
 use List::Util qw(first);
 use WebService::Linode::Base;
 
-our $VERSION = '0.05';
+our $VERSION = '0.06';
 our @ISA     = ("WebService::Linode::Base");
 our $AUTOLOAD;
 
@@ -19,6 +19,7 @@ my %validation = (
         kernels       => [ [], [ 'kernelid', 'isxen' ] ],
         linodeplans   => [ [], [ 'plainid'           ] ],
         distributions => [ [], [ 'distributionid'    ] ],
+        stackscripts  => [ [], [ 'distributionid', 'distributionvendor', 'keywords'] ],
     },
     domain => {
         create => [ [ 'domain', 'type' ], [ qw( description soa_email refresh_sec retry_sec expire_sec ttl_sec status master_ips ) ]],
@@ -40,6 +41,7 @@ my %validation = (
         shutdown => [ ['linodeid'], [] ],
         boot     => [ ['linodeid'], ['configid'] ],
         reboot   => [ ['linodeid'], ['configid'] ],
+        resize   => [ ['linodeid', 'planid'], [] ],
     },
 
     linode_config => {
@@ -58,13 +60,24 @@ my %validation = (
         createfromdistribution => [ [ qw( linodeid distributionid label size rootpass ) ], [ 'rootsshkey' ] ],
         duplicate => [ [ 'linodeid', 'diskid' ], [] ],
         resize    => [ [ 'linodeid', 'diskid', 'size' ], [] ],
+        createfromstackscript  => [ [ qw( linodeid stackscriptid stackscriptudfresponses distributionid label size rootpass) ], [] ],
 
     },
     linode_ip => {
-        list  => [ [ 'linodeid' ], [ 'ipaddressid' ] ],
+        list       => [ [ 'linodeid' ], [ 'ipaddressid' ] ],
+        addprivate => [ [ 'linodeid' ], [] ],
     },
     linode_job => {
         list => [ [ 'linodeid' ], [ 'jobid', 'pendingonly' ] ],
+    },
+    stackscript => {
+	    create => [ ['label', 'distributionidlist', 'script' ], ['description', 'ispublic', 'rev_note'] ],
+        delete => [ ['stackscriptid'], [] ],
+        list   => [ ['stackscriptid'], [] ],
+        update => [ ['stackscriptid'], [ qw( label description distributionidlist ispublic rev_note script) ] ],
+    },
+    test => {
+	    echo   => [ [], [] ],
     },
     user => {
         getapikey => [ [ 'username', 'password' ], [] ],
@@ -149,11 +162,11 @@ WebService::Linode - Perl Interface to the Linode.com API.
 
 =head1 VERSION
 
-Version 0.05
+Version 0.06
 
 =head1 SYNOPSIS
 
-    my $api = new WebService::Linode( apikey => 'your api key here');
+    my $api = WebService::Linode->new( apikey => 'your api key here');
     print Dumper($api->linode_list);
     $api->linode_reboot(linodeid=>242);
 
@@ -164,7 +177,33 @@ same.  For additional information see L<http://www.linode.com/api/autodoc.cfm>
 
 =head1 Methods from the Linode API
 
+=head3 avail_stackscripts
+
+Required Parameters:
+
+=over 4
+
+=back
+
+Optional Parameters:
+
+=over 4
+
+=item * distributionid
+
+=item * distributionvendor
+
+=item * keywords
+
+=back
+
 =head3 avail_kernels
+
+Required Parameters:
+
+=over 4
+
+=back
 
 Optional Parameters:
 
@@ -178,6 +217,12 @@ Optional Parameters:
 
 =head3 avail_linodeplans
 
+Required Parameters:
+
+=over 4
+
+=back
+
 Optional Parameters:
 
 =over 4
@@ -188,7 +233,25 @@ Optional Parameters:
 
 =head3 avail_datacenters
 
+Required Parameters:
+
+=over 4
+
+=back
+
+Optional Parameters:
+
+=over 4
+
+=back
+
 =head3 avail_distributions
+
+Required Parameters:
+
+=over 4
+
+=back
 
 Optional Parameters:
 
@@ -456,6 +519,24 @@ Optional Parameters:
 
 =back
 
+=head3 linode_resize
+
+Required Parameters:
+
+=over 4
+
+=item * linodeid
+
+=item * planid
+
+=back
+
+Optional Parameters:
+
+=over 4
+
+=back
+
 =head3 linode_shutdown
 
 Required Parameters:
@@ -692,7 +773,7 @@ Optional Parameters:
 
 =back
 
-=head3 linode_disk_resize
+=head3 linode_disk_createfromstackscript
 
 Required Parameters:
 
@@ -700,9 +781,17 @@ Required Parameters:
 
 =item * linodeid
 
-=item * diskid
+=item * stackscriptid
+
+=item * stackscriptudfresponses
+
+=item * distributionid
+
+=item * label
 
 =item * size
+
+=item * rootpass
 
 =back
 
@@ -735,6 +824,26 @@ Optional Parameters:
 =over 4
 
 =item * rootsshkey
+
+=back
+
+=head3 linode_disk_resize
+
+Required Parameters:
+
+=over 4
+
+=item * linodeid
+
+=item * diskid
+
+=item * size
+
+=back
+
+Optional Parameters:
+
+=over 4
 
 =back
 
@@ -814,6 +923,22 @@ Optional Parameters:
 
 =back
 
+=head3 linode_ip_addprivate
+
+Required Parameters:
+
+=over 4
+
+=item * linodeid
+
+=back
+
+Optional Parameters:
+
+=over 4
+
+=back
+
 =head3 linode_ip_list
 
 Required Parameters:
@@ -852,15 +977,89 @@ Optional Parameters:
 
 =back
 
-=head3 user_getapikey
+=head3 stackscript_create
 
 Required Parameters:
 
 =over 4
 
-=item * username
+=item * label
 
-=item * password
+=item * distributionidlist
+
+=item * script
+
+=back
+
+Optional Parameters:
+
+=over 4
+
+=item * description
+
+=item * ispublic
+
+=item * rev_note
+
+=back
+
+=head3 stackscript_delete
+
+Required Parameters:
+
+=over 4
+
+=item * stackscriptid
+
+=back
+
+Optional Parameters:
+
+=over 4
+
+=back
+
+=head3 stackscript_update
+
+Required Parameters:
+
+=over 4
+
+=item * stackscriptid
+
+=back
+
+Optional Parameters:
+
+=over 4
+
+=item * label
+
+=item * description
+
+=item * distributionidlist
+
+=item * ispublic
+
+=item * rev_note
+
+=item * script
+
+=back
+
+=head3 stackscript_list
+
+Required Parameters:
+
+=over 4
+
+=item * stackscriptid
+
+=back
+
+Optional Parameters:
+
+=over 4
 
 =back
 
@@ -876,7 +1075,13 @@ Takes a record name and domainid or domain and returns the resourceid.
 
 =head1 AUTHORS
 
-Michael Greb, C<< <mgreb@linode.com> >>, and Stan "The Intern Man" Schwertly
+=over
+
+=item * Michael Greb, C<< <mgreb@linode.com> >>
+
+=item * Stan "The Man" Schwertly C<< <stan@linode.com> >>
+
+=back
 
 =head1 BUGS
 

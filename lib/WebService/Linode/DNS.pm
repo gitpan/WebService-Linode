@@ -12,11 +12,11 @@ WebService::Linode::DNS - Perl Interface to the Linode.com API DNS methods.
 
 =head1 VERSION
 
-Version 0.05
+Version 0.06
 
 =cut
 
-our $VERSION = '0.05';
+our $VERSION = '0.06';
 our @ISA = ("WebService::Linode::Base");
 
 sub getDomainIDbyName {
@@ -273,7 +273,7 @@ Example usage:
 
 	use WebService::Linode::DNS;
 
-	my $api = new WebService::Linode::DNS(apikey => 'mmmcake');
+	my $api = WebService::Linode::DNS->new(apikey => 'mmmcake');
 	for my $domain (@{$api->domainList}) {
 		print $domain->{domainid}, "\n";
 	}
