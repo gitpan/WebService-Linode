@@ -1,5 +1,9 @@
 Revision history for WebService-Linode
 
+0.07
+    - Correct typo from 'resouce' to 'resource' (closes rt #70275 reported
+      by gchild-cpan)
+    - Add the new account.info method
 0.06
     - Correct reference to module name in docs (closes rt #59535 reported
       by Paul Hansen)

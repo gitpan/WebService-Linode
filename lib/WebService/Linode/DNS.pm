@@ -12,11 +12,11 @@ WebService::Linode::DNS - Perl Interface to the Linode.com API DNS methods.
 
 =head1 VERSION
 
-Version 0.06
+Version 0.07
 
 =cut
 
-our $VERSION = '0.06';
+our $VERSION = '0.07';
 our @ISA = ("WebService::Linode::Base");
 
 sub getDomainIDbyName {
@@ -50,7 +50,7 @@ sub domainList {
 			# lower case the keys (they come all caps)
 			my $domain_data = $self->_lc_keys($domain);
 			# store zone id in $self->{_domains}{[name]}
-			$self->{_domains}{$domain_data->{domain}} = 
+			$self->{_domains}{$domain_data->{domain}} =
 				$domain_data->{domainid} unless $self->{_nocache};
 			push @domains, $domain_data;
 		}
@@ -337,7 +337,7 @@ Requires domainid, deletes the domain
 =head2 domainResourceList
 
 Requires domainid or domain passed in as args.  'domain' is the name of the
-zone and will be mapped to domainid before executing the API method. 
+zone and will be mapped to domainid before executing the API method.
 Returns a reference to an array.  The array contains one entry per domain
 containing a reference to a hash with the data for that domain.  Keys in the
 hash use the same names returned by the Linode API though the names have been

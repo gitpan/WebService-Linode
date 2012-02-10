@@ -9,7 +9,7 @@ use Carp;
 use List::Util qw(first);
 use WebService::Linode::Base;
 
-our $VERSION = '0.06';
+our $VERSION = '0.07';
 our @ISA     = ("WebService::Linode::Base");
 our $AUTOLOAD;
 
@@ -29,7 +29,7 @@ my %validation = (
     },
     domain_resource => {
         create => [ ['domainid', 'type'], [ qw( name target priority weight port protocol ttl_sec )] ],
-        list   => [ ['domainid'], ['resouceid'] ],
+        list   => [ ['domainid'], ['resourceid'] ],
         update => [ [ 'domainid', 'resourceid' ], [ qw( name target priority weight port protocol ttl_sec )] ],
         delete => [ [ 'domainid', 'resourceid' ], [] ],
     },
@@ -81,6 +81,9 @@ my %validation = (
     },
     user => {
         getapikey => [ [ 'username', 'password' ], [] ],
+    },
+    account => {
+        info => [ [], [] ],
     },
 );
 
@@ -162,7 +165,7 @@ WebService::Linode - Perl Interface to the Linode.com API.
 
 =head1 VERSION
 
-Version 0.06
+Version 0.07
 
 =head1 SYNOPSIS
 
@@ -459,7 +462,7 @@ Optional Parameters:
 
 =over 4
 
-=item * resouceid
+=item * resourceid
 
 =back
 
