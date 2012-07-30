@@ -15,11 +15,11 @@ WebService::Linode::Base - Perl Interface to the Linode.com API.
 
 =head1 VERSION
 
-Version 0.07
+Version 0.06
 
 =cut
 
-our $VERSION = '0.07';
+our $VERSION = '0.06';
 our $err;
 our $errstr;
 

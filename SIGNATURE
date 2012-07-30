@@ -14,18 +14,18 @@ not run its Makefile.PL or Build.PL.
 -----BEGIN PGP SIGNED MESSAGE-----
 Hash: SHA1
 
-SHA1 0e130e53fe6bf5afd5fba9304a745028eeb4d4a8 Changes
+SHA1 0a49f7aad13a3b21b61f7a2d6f555f298719137e Changes
 SHA1 394aabc5c1a90dc95ff5e5be4bb2b9edb89f0e72 MANIFEST
-SHA1 bab1b2cdee5e29a30116fad6b57168f19c89c15f MANIFEST.SKIP
-SHA1 ac888b2176c76aec00814b1df0de3da01f066451 META.yml
+SHA1 2125c5ec59c9dd44d037df6fa53eefb49c380aac MANIFEST.SKIP
+SHA1 b5aaf9fa0aba2b6cd8efa87ef6646ebd05307dc5 META.yml
 SHA1 55a87be8a4dc9fded0b436a7d86100a53354f457 Makefile.PL
-SHA1 b877d5fa98dbdf4184ac021d5d0aedba3af69859 README
-SHA1 d5306cb8aa1d3a37d7827046b7aa87daffb7655c TODO
+SHA1 b88e5b21faf00f8ac414ebf1d63ec98bdbd8cc98 README
+SHA1 db0a034afc3baacc90071b02acb336149a4600a6 TODO
 SHA1 d6060cd71bb82dc20692693caba71a02766ee0bb examples/dyndns.pl
 SHA1 3e9ddb7c44f400b7671cacb9c938ba559c419d02 examples/list_records.pl
-SHA1 26d0a4dcf3d9a093ab39e6a895588d3ace0d7a26 lib/WebService/Linode.pm
-SHA1 b9d8d876862aa3cfed5d04ce69a5cfa309ae18be lib/WebService/Linode/Base.pm
-SHA1 1e0693aa32e99e2cea63361fa9a5e9e296908176 lib/WebService/Linode/DNS.pm
+SHA1 2d880b17ff4b911f06cfc884e68182536e46717a lib/WebService/Linode.pm
+SHA1 a2e3116ab53f9ea04c397c65725d054d54bdba6e lib/WebService/Linode/Base.pm
+SHA1 4ab25d6b83d88c0fffdb61955e6823897a3be6bf lib/WebService/Linode/DNS.pm
 SHA1 dd04c320b2135fa372e3f552d98ac2d043b58fdb t/00-load.t
 SHA1 caef327f714c886e259887635bbed0ac60a143cc t/01-domains.t
 SHA1 9701c2e3c0220b656ecd82005b6abf5843c3dbc1 t/boilerplate.t
@@ -33,13 +33,9 @@ SHA1 0b1c5a2d59be6bfa7d60c64cd964fea6a0331705 t/pod-coverage.t
 SHA1 640935336dc1123c0069bcf5432bcaedc2cf22d3 t/pod.t
 SHA1 380b016bbb9f219b7677ac58037fa21fbb90282c t/signature.t
 -----BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.4.11 (Darwin)
+Version: GnuPG v1.4.8 (Darwin)
 
-iQEcBAEBAgAGBQJPNTWtAAoJECL4cAGE6i9nVsMIAIdMigBgT5n/+Bh7Bom2vlf5
-QA6LM6N+OQj+Gd7mR0OL8EUe2RYiOqj4LsTwUfDKh3k+avn6Jkp1a2jLnMTQni0f
-XZlIi4UnDbX5d9XJYeJ3H0c9X3Y4XRQbyDltYbFeVc1uBzRQUhI3HYTmFH75trsc
-VAG5GtU1Xs7clufE2aP6cT6RC2/also7bkYmDwF3htcTSfAB9g0Yy+491Zk0Go4j
-77xK56l0mfoyyfBIyAGEtbUE6WUk4CMgi1YByT3KPAzwvizTZm0NWSiEvEDpSWzl
-iwturQnWOFrf0OMjZrAoIxtVEJ2PnwiF0yvFOG7fLMuXHMvv0D/coTAJA9uuwBc=
-=Sya0
+iEYEARECAAYFAlAV8sgACgkQ0Qbp4bPZvev7ugCgrdX1k9P7UjvXGIvzPqwKtkLt
+nJ4Anj3A54QnNqbSln2YhUiZzc9ASe+b
+=/tzz
 -----END PGP SIGNATURE-----
