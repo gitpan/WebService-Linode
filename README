@@ -1,52 +1,732 @@
-WebService-Linode
+NAME
+    WebService::Linode - Perl Interface to the Linode.com API.
 
-This module provides access to the Linode.com API from perl.
+VERSION
+    Version 0.11
 
-This is version 0.06 of the module.
+SYNOPSIS
+        my $api = WebService::Linode->new( apikey => 'your api key here');
+        print Dumper($api->linode_list);
+        $api->linode_reboot(linodeid=>242);
 
-PREREQUISITES
+    This module implements the Linode.com api methods. Linode methods have
+    had dots replaced with underscores to generate the perl method name. All
+    keys and parameters have been lower cased but returned data remains
+    otherwise the same. For additional information see
+    <http://www.linode.com/api/autodoc.cfm>
 
-This module requires SSL support from LWP::UserAgent.  This is available by
-ensuring either Crypt::SSLeay or IO::Socket::SSL are also installed.  The
-Makefile.PL for this distribution defines Crypt::SSLeay as a prerequisite.  If
-you prefer to use IO::Socket::SSL, you may replace Crypt::SSLeay with it in
-Makefile.PL.
+Methods from the Linode API
+   avail_stackscripts
+    Required Parameters:
 
-INSTALLATION
+    Optional Parameters:
 
-To install this module, run the following commands:
+    *   distributionid
 
-	perl Makefile.PL
-	make
-	make test
-	make install
+    *   keywords
 
-SUPPORT AND DOCUMENTATION
+    *   distributionvendor
 
-After installing, you can find documentation for this module with the
-perldoc command.
+   avail_kernels
+    Required Parameters:
 
-    perldoc WebService::Linode
+    Optional Parameters:
 
-You can also look for information at:
+    *   kernelid
 
-    RT, CPAN's request tracker
-        http://rt.cpan.org/NoAuth/Bugs.html?Dist=WebService-Linode
+    *   isxen
 
-    AnnoCPAN, Annotated CPAN documentation
-        http://annocpan.org/dist/WebService-Linode
+   avail_linodeplans
+    Required Parameters:
 
-    CPAN Ratings
-        http://cpanratings.perl.org/d/WebService-Linode
+    Optional Parameters:
 
-    Search CPAN
-        http://search.cpan.org/dist/WebService-Linode
+    *   planid
 
+   avail_datacenters
+    Required Parameters:
 
-COPYRIGHT AND LICENCE
+    Optional Parameters:
 
-Copyright (C) 2008-2009 Linode, LLC
+   avail_distributions
+    Required Parameters:
 
-This program is free software; you can redistribute it and/or modify it
-under the same terms as Perl itself.
+    Optional Parameters:
+
+    *   distributionid
+
+   domain_create
+    Required Parameters:
+
+    *   type
+
+    *   domain
+
+    Optional Parameters:
+
+    *   refresh_sec
+
+    *   retry_sec
+
+    *   master_ips
+
+    *   expire_sec
+
+    *   soa_email
+
+    *   axfr_ips
+
+    *   description
+
+    *   ttl_sec
+
+    *   status
+
+   domain_delete
+    Required Parameters:
+
+    *   domainid
+
+    Optional Parameters:
+
+   domain_update
+    Required Parameters:
+
+    *   domainid
+
+    Optional Parameters:
+
+    *   refresh_sec
+
+    *   retry_sec
+
+    *   master_ips
+
+    *   type
+
+    *   expire_sec
+
+    *   domain
+
+    *   soa_email
+
+    *   axfr_ips
+
+    *   description
+
+    *   ttl_sec
+
+    *   status
+
+   domain_list
+    Required Parameters:
+
+    Optional Parameters:
+
+    *   domainid
+
+   domain_resource_create
+    Required Parameters:
+
+    *   type
+
+    *   domainid
+
+    Optional Parameters:
+
+    *   protocol
+
+    *   name
+
+    *   weight
+
+    *   target
+
+    *   priority
+
+    *   ttl_sec
+
+    *   port
+
+   domain_resource_delete
+    Required Parameters:
+
+    *   resourceid
+
+    *   domainid
+
+    Optional Parameters:
+
+   domain_resource_update
+    Required Parameters:
+
+    *   resourceid
+
+    Optional Parameters:
+
+    *   weight
+
+    *   target
+
+    *   priority
+
+    *   ttl_sec
+
+    *   domainid
+
+    *   port
+
+    *   protocol
+
+    *   name
+
+   domain_resource_list
+    Required Parameters:
+
+    *   domainid
+
+    Optional Parameters:
+
+    *   resourceid
+
+   linode_mutate
+    Required Parameters:
+
+    *   linodeid
+
+    Optional Parameters:
+
+   linode_create
+    Required Parameters:
+
+    *   datacenterid
+
+    *   planid
+
+    *   paymentterm
+
+    Optional Parameters:
+
+   linode_reboot
+    Required Parameters:
+
+    *   linodeid
+
+    Optional Parameters:
+
+    *   configid
+
+   linode_webconsoletoken
+    Required Parameters:
+
+    *   linodeid
+
+    Optional Parameters:
+
+   linode_boot
+    Required Parameters:
+
+    *   linodeid
+
+    Optional Parameters:
+
+    *   configid
+
+   linode_resize
+    Required Parameters:
+
+    *   linodeid
+
+    *   planid
+
+    Optional Parameters:
+
+   linode_clone
+    Required Parameters:
+
+    *   linodeid
+
+    *   paymentterm
+
+    *   datacenterid
+
+    *   planid
+
+    Optional Parameters:
+
+   linode_shutdown
+    Required Parameters:
+
+    *   linodeid
+
+    Optional Parameters:
+
+   linode_delete
+    Required Parameters:
+
+    *   linodeid
+
+    Optional Parameters:
+
+    *   skipchecks
+
+   linode_update
+    Required Parameters:
+
+    *   linodeid
+
+    Optional Parameters:
+
+    *   alert_diskio_threshold
+
+    *   lpm_displaygroup
+
+    *   watchdog
+
+    *   alert_bwout_threshold
+
+    *   ms_ssh_disabled
+
+    *   ms_ssh_ip
+
+    *   ms_ssh_user
+
+    *   alert_bwout_enabled
+
+    *   alert_diskio_enabled
+
+    *   ms_ssh_port
+
+    *   alert_bwquota_enabled
+
+    *   alert_bwin_threshold
+
+    *   backupweeklyday
+
+    *   alert_cpu_enabled
+
+    *   alert_bwquota_threshold
+
+    *   backupwindow
+
+    *   alert_cpu_threshold
+
+    *   alert_bwin_enabled
+
+    *   label
+
+   linode_list
+    Required Parameters:
+
+    Optional Parameters:
+
+    *   linodeid
+
+   linode_config_create
+    Required Parameters:
+
+    *   kernelid
+
+    *   linodeid
+
+    *   label
+
+    Optional Parameters:
+
+    *   rootdevicero
+
+    *   helper_disableupdatedb
+
+    *   rootdevicenum
+
+    *   comments
+
+    *   rootdevicecustom
+
+    *   devtmpfs_automount
+
+    *   ramlimit
+
+    *   runlevel
+
+    *   helper_depmod
+
+    *   helper_xen
+
+    *   disklist
+
+   linode_config_delete
+    Required Parameters:
+
+    *   linodeid
+
+    *   configid
+
+    Optional Parameters:
+
+   linode_config_update
+    Required Parameters:
+
+    *   configid
+
+    Optional Parameters:
+
+    *   helper_disableupdatedb
+
+    *   rootdevicero
+
+    *   comments
+
+    *   rootdevicenum
+
+    *   rootdevicecustom
+
+    *   kernelid
+
+    *   runlevel
+
+    *   ramlimit
+
+    *   devtmpfs_automount
+
+    *   helper_depmod
+
+    *   linodeid
+
+    *   helper_xen
+
+    *   disklist
+
+    *   label
+
+   linode_config_list
+    Required Parameters:
+
+    *   linodeid
+
+    Optional Parameters:
+
+    *   configid
+
+   linode_disk_create
+    Required Parameters:
+
+    *   label
+
+    *   size
+
+    *   type
+
+    *   linodeid
+
+    Optional Parameters:
+
+   linode_disk_resize
+    Required Parameters:
+
+    *   diskid
+
+    *   linodeid
+
+    *   size
+
+    Optional Parameters:
+
+   linode_disk_createfromdistribution
+    Required Parameters:
+
+    *   rootpass
+
+    *   linodeid
+
+    *   distributionid
+
+    *   size
+
+    *   label
+
+    Optional Parameters:
+
+    *   rootsshkey
+
+   linode_disk_duplicate
+    Required Parameters:
+
+    *   diskid
+
+    *   linodeid
+
+    Optional Parameters:
+
+   linode_disk_delete
+    Required Parameters:
+
+    *   linodeid
+
+    *   diskid
+
+    Optional Parameters:
+
+   linode_disk_update
+    Required Parameters:
+
+    *   diskid
+
+    Optional Parameters:
+
+    *   linodeid
+
+    *   label
+
+    *   isreadonly
+
+   linode_disk_list
+    Required Parameters:
+
+    *   linodeid
+
+    Optional Parameters:
+
+    *   diskid
+
+   linode_disk_createfromstackscript
+    Required Parameters:
+
+    *   size
+
+    *   label
+
+    *   linodeid
+
+    *   stackscriptid
+
+    *   distributionid
+
+    *   rootpass
+
+    *   stackscriptudfresponses
+
+    Optional Parameters:
+
+   linode_ip_addprivate
+    Required Parameters:
+
+    *   linodeid
+
+    Optional Parameters:
+
+   linode_ip_list
+    Required Parameters:
+
+    *   linodeid
+
+    Optional Parameters:
+
+    *   ipaddressid
+
+   linode_job_list
+    Required Parameters:
+
+    *   linodeid
+
+    Optional Parameters:
+
+    *   pendingonly
+
+    *   jobid
+
+   stackscript_create
+    Required Parameters:
+
+    *   label
+
+    *   distributionidlist
+
+    *   script
+
+    Optional Parameters:
+
+    *   rev_note
+
+    *   description
+
+    *   ispublic
+
+   stackscript_delete
+    Required Parameters:
+
+    *   stackscriptid
+
+    Optional Parameters:
+
+   stackscript_update
+    Required Parameters:
+
+    *   stackscriptid
+
+    Optional Parameters:
+
+    *   distributionidlist
+
+    *   description
+
+    *   script
+
+    *   ispublic
+
+    *   rev_note
+
+    *   label
+
+   stackscript_list
+    Required Parameters:
+
+    Optional Parameters:
+
+    *   stackscriptid
+
+   nodebalancer_config_create
+    Required Parameters:
+
+    *   nodebalancerid
+
+    Optional Parameters:
+
+    *   protocol
+
+    *   check
+
+    *   check_path
+
+    *   check_interval
+
+    *   algorithm
+
+    *   check_attempts
+
+    *   stickiness
+
+    *   check_timeout
+
+    *   check_body
+
+    *   port
+
+   nodebalancer_config_delete
+    Required Parameters:
+
+    *   configid
+
+    Optional Parameters:
+
+   nodebalancer_config_update
+    Required Parameters:
+
+    *   configid
+
+    Optional Parameters:
+
+    *   check_body
+
+    *   stickiness
+
+    *   check_attempts
+
+    *   check_timeout
+
+    *   algorithm
+
+    *   port
+
+    *   check
+
+    *   protocol
+
+    *   check_path
+
+    *   check_interval
+
+   nodebalancer_config_list
+    Required Parameters:
+
+    *   nodebalancerid
+
+    Optional Parameters:
+
+    *   configid
+
+   nodebalancer_node_create
+    Required Parameters:
+
+    *   label
+
+    *   address
+
+    *   configid
+
+    Optional Parameters:
+
+    *   mode
+
+    *   weight
+
+   nodebalancer_node_delete
+    Required Parameters:
+
+    *   nodeid
+
+    Optional Parameters:
+
+   nodebalancer_node_update
+    Required Parameters:
+
+    *   nodeid
+
+    Optional Parameters:
+
+    *   mode
+
+    *   label
+
+    *   address
+
+    *   weight
+
+   nodebalancer_node_list
+    Required Parameters:
+
+    *   configid
+
+    Optional Parameters:
+
+    *   nodeid
+
+   user_getapikey
+    Required Parameters:
+
+    *   username
+
+    *   password
+
+    Optional Parameters:
+
+Additional Helper Methods
+    These methods are deprecated and will be going away.
+
+   getDomainIDbyName( domain => 'example.com' )
+    Returns the ID for a domain given the name.
+
+   getDomainResourceIDbyName( domainid => 242, name => 'www')
+    Takes a record name and domainid or domain and returns the resourceid.
+
+AUTHORS
+    *   Michael Greb, "<mgreb@linode.com>"
+
+    *   Stan "The Man" Schwertly "<stan@linode.com>"
+
+COPYRIGHT & LICENSE
+    Copyright 2008-2009 Linode, LLC, all rights reserved.
+
+    This program is free software; you can redistribute it and/or modify it
+    under the same terms as Perl itself.
 

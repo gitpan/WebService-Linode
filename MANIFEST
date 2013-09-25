@@ -1,20 +1,22 @@
+Build.PL
 Changes
+LICENSE
 MANIFEST
-MANIFEST.SKIP
-Makefile.PL
+META.json
+META.yml
 README
-TODO
+cpanfile
+dist.ini
+examples/dyndns.pl
+examples/list_records.pl
+examples/run_method.pl
 lib/WebService/Linode.pm
-lib/WebService/Linode/DNS.pm
 lib/WebService/Linode/Base.pm
+lib/WebService/Linode/DNS.pm
 t/00-load.t
 t/01-domains.t
+t/boilerplate.t
 t/pod-coverage.t
 t/pod.t
-t/boilerplate.t
-t/signature.t
-examples/list_records.pl
-examples/dyndns.pl
-META.yml                                 Module YAML meta-data (added by MakeMaker)
-META.json                                Module JSON meta-data (added by MakeMaker)
-SIGNATURE                                Public-key signature (added by MakeMaker)
+t/release-kwalitee.t
+t/release-pod-syntax.t
