@@ -1,9 +1,6 @@
 NAME
     WebService::Linode - Perl Interface to the Linode.com API.
 
-VERSION
-    Version 0.11
-
 SYNOPSIS
         my $api = WebService::Linode->new( apikey => 'your api key here');
         print Dumper($api->linode_list);
@@ -13,12 +10,10 @@ SYNOPSIS
     had dots replaced with underscores to generate the perl method name. All
     keys and parameters have been lower cased but returned data remains
     otherwise the same. For additional information see
-    <http://www.linode.com/api/autodoc.cfm>
+    <http://www.linode.com/api/>
 
 Methods from the Linode API
    avail_stackscripts
-    Required Parameters:
-
     Optional Parameters:
 
     *   distributionid
@@ -28,8 +23,6 @@ Methods from the Linode API
     *   distributionvendor
 
    avail_kernels
-    Required Parameters:
-
     Optional Parameters:
 
     *   kernelid
@@ -37,20 +30,12 @@ Methods from the Linode API
     *   isxen
 
    avail_linodeplans
-    Required Parameters:
-
     Optional Parameters:
 
     *   planid
 
    avail_datacenters
-    Required Parameters:
-
-    Optional Parameters:
-
    avail_distributions
-    Required Parameters:
-
     Optional Parameters:
 
     *   distributionid
@@ -87,8 +72,6 @@ Methods from the Linode API
 
     *   domainid
 
-    Optional Parameters:
-
    domain_update
     Required Parameters:
 
@@ -119,8 +102,6 @@ Methods from the Linode API
     *   status
 
    domain_list
-    Required Parameters:
-
     Optional Parameters:
 
     *   domainid
@@ -154,8 +135,6 @@ Methods from the Linode API
     *   resourceid
 
     *   domainid
-
-    Optional Parameters:
 
    domain_resource_update
     Required Parameters:
@@ -194,8 +173,6 @@ Methods from the Linode API
 
     *   linodeid
 
-    Optional Parameters:
-
    linode_create
     Required Parameters:
 
@@ -204,8 +181,6 @@ Methods from the Linode API
     *   planid
 
     *   paymentterm
-
-    Optional Parameters:
 
    linode_reboot
     Required Parameters:
@@ -220,8 +195,6 @@ Methods from the Linode API
     Required Parameters:
 
     *   linodeid
-
-    Optional Parameters:
 
    linode_boot
     Required Parameters:
@@ -239,8 +212,6 @@ Methods from the Linode API
 
     *   planid
 
-    Optional Parameters:
-
    linode_clone
     Required Parameters:
 
@@ -252,14 +223,10 @@ Methods from the Linode API
 
     *   planid
 
-    Optional Parameters:
-
    linode_shutdown
     Required Parameters:
 
     *   linodeid
-
-    Optional Parameters:
 
    linode_delete
     Required Parameters:
@@ -316,8 +283,6 @@ Methods from the Linode API
     *   label
 
    linode_list
-    Required Parameters:
-
     Optional Parameters:
 
     *   linodeid
@@ -361,8 +326,6 @@ Methods from the Linode API
     *   linodeid
 
     *   configid
-
-    Optional Parameters:
 
    linode_config_update
     Required Parameters:
@@ -419,8 +382,6 @@ Methods from the Linode API
 
     *   linodeid
 
-    Optional Parameters:
-
    linode_disk_resize
     Required Parameters:
 
@@ -429,8 +390,6 @@ Methods from the Linode API
     *   linodeid
 
     *   size
-
-    Optional Parameters:
 
    linode_disk_createfromdistribution
     Required Parameters:
@@ -456,16 +415,12 @@ Methods from the Linode API
 
     *   linodeid
 
-    Optional Parameters:
-
    linode_disk_delete
     Required Parameters:
 
     *   linodeid
 
     *   diskid
-
-    Optional Parameters:
 
    linode_disk_update
     Required Parameters:
@@ -506,14 +461,10 @@ Methods from the Linode API
 
     *   stackscriptudfresponses
 
-    Optional Parameters:
-
    linode_ip_addprivate
     Required Parameters:
 
     *   linodeid
-
-    Optional Parameters:
 
    linode_ip_list
     Required Parameters:
@@ -557,8 +508,6 @@ Methods from the Linode API
 
     *   stackscriptid
 
-    Optional Parameters:
-
    stackscript_update
     Required Parameters:
 
@@ -579,8 +528,6 @@ Methods from the Linode API
     *   label
 
    stackscript_list
-    Required Parameters:
-
     Optional Parameters:
 
     *   stackscriptid
@@ -616,8 +563,6 @@ Methods from the Linode API
     Required Parameters:
 
     *   configid
-
-    Optional Parameters:
 
    nodebalancer_config_update
     Required Parameters:
@@ -675,8 +620,6 @@ Methods from the Linode API
 
     *   nodeid
 
-    Optional Parameters:
-
    nodebalancer_node_update
     Required Parameters:
 
@@ -707,8 +650,6 @@ Methods from the Linode API
     *   username
 
     *   password
-
-    Optional Parameters:
 
 Additional Helper Methods
     These methods are deprecated and will be going away.
