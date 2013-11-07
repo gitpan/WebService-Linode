@@ -18,16 +18,16 @@ Methods from the Linode API
 
     *   distributionid
 
-    *   keywords
-
     *   distributionvendor
+
+    *   keywords
 
    avail_kernels
     Optional Parameters:
 
-    *   kernelid
-
     *   isxen
+
+    *   kernelid
 
    avail_linodeplans
     Optional Parameters:
@@ -43,29 +43,31 @@ Methods from the Linode API
    domain_create
     Required Parameters:
 
-    *   type
-
     *   domain
 
+    *   type
+
     Optional Parameters:
-
-    *   refresh_sec
-
-    *   retry_sec
-
-    *   master_ips
-
-    *   expire_sec
-
-    *   soa_email
 
     *   axfr_ips
 
     *   description
 
-    *   ttl_sec
+    *   expire_sec
+
+    *   lpm_displaygroup
+
+    *   master_ips
+
+    *   refresh_sec
+
+    *   retry_sec
+
+    *   soa_email
 
     *   status
+
+    *   ttl_sec
 
    domain_delete
     Required Parameters:
@@ -79,27 +81,29 @@ Methods from the Linode API
 
     Optional Parameters:
 
-    *   refresh_sec
-
-    *   retry_sec
-
-    *   master_ips
-
-    *   type
-
-    *   expire_sec
-
-    *   domain
-
-    *   soa_email
-
     *   axfr_ips
 
     *   description
 
-    *   ttl_sec
+    *   domain
+
+    *   expire_sec
+
+    *   lpm_displaygroup
+
+    *   master_ips
+
+    *   refresh_sec
+
+    *   retry_sec
+
+    *   soa_email
 
     *   status
+
+    *   ttl_sec
+
+    *   type
 
    domain_list
     Optional Parameters:
@@ -109,32 +113,32 @@ Methods from the Linode API
    domain_resource_create
     Required Parameters:
 
-    *   type
-
     *   domainid
+
+    *   type
 
     Optional Parameters:
 
-    *   protocol
-
     *   name
 
-    *   weight
-
-    *   target
+    *   port
 
     *   priority
 
+    *   protocol
+
+    *   target
+
     *   ttl_sec
 
-    *   port
+    *   weight
 
    domain_resource_delete
     Required Parameters:
 
-    *   resourceid
-
     *   domainid
+
+    *   resourceid
 
    domain_resource_update
     Required Parameters:
@@ -143,21 +147,21 @@ Methods from the Linode API
 
     Optional Parameters:
 
-    *   weight
-
-    *   target
-
-    *   priority
-
-    *   ttl_sec
-
     *   domainid
+
+    *   name
 
     *   port
 
+    *   priority
+
     *   protocol
 
-    *   name
+    *   target
+
+    *   ttl_sec
+
+    *   weight
 
    domain_resource_list
     Required Parameters:
@@ -178,9 +182,9 @@ Methods from the Linode API
 
     *   datacenterid
 
-    *   planid
-
     *   paymentterm
+
+    *   planid
 
    linode_reboot
     Required Parameters:
@@ -215,11 +219,11 @@ Methods from the Linode API
    linode_clone
     Required Parameters:
 
+    *   datacenterid
+
     *   linodeid
 
     *   paymentterm
-
-    *   datacenterid
 
     *   planid
 
@@ -244,43 +248,43 @@ Methods from the Linode API
 
     Optional Parameters:
 
-    *   alert_diskio_threshold
+    *   alert_bwin_enabled
 
-    *   lpm_displaygroup
+    *   alert_bwin_threshold
 
-    *   watchdog
+    *   alert_bwout_enabled
 
     *   alert_bwout_threshold
+
+    *   alert_bwquota_enabled
+
+    *   alert_bwquota_threshold
+
+    *   alert_cpu_enabled
+
+    *   alert_cpu_threshold
+
+    *   alert_diskio_enabled
+
+    *   alert_diskio_threshold
+
+    *   backupweeklyday
+
+    *   backupwindow
+
+    *   label
+
+    *   lpm_displaygroup
 
     *   ms_ssh_disabled
 
     *   ms_ssh_ip
 
-    *   ms_ssh_user
-
-    *   alert_bwout_enabled
-
-    *   alert_diskio_enabled
-
     *   ms_ssh_port
 
-    *   alert_bwquota_enabled
+    *   ms_ssh_user
 
-    *   alert_bwin_threshold
-
-    *   backupweeklyday
-
-    *   alert_cpu_enabled
-
-    *   alert_bwquota_threshold
-
-    *   backupwindow
-
-    *   alert_cpu_threshold
-
-    *   alert_bwin_enabled
-
-    *   label
+    *   watchdog
 
    linode_list
     Optional Parameters:
@@ -292,40 +296,40 @@ Methods from the Linode API
 
     *   kernelid
 
-    *   linodeid
-
     *   label
+
+    *   linodeid
 
     Optional Parameters:
 
-    *   rootdevicero
-
-    *   helper_disableupdatedb
-
-    *   rootdevicenum
-
     *   comments
-
-    *   rootdevicecustom
 
     *   devtmpfs_automount
 
-    *   ramlimit
-
-    *   runlevel
+    *   disklist
 
     *   helper_depmod
 
+    *   helper_disableupdatedb
+
     *   helper_xen
 
-    *   disklist
+    *   ramlimit
+
+    *   rootdevicecustom
+
+    *   rootdevicenum
+
+    *   rootdevicero
+
+    *   runlevel
 
    linode_config_delete
     Required Parameters:
 
-    *   linodeid
-
     *   configid
+
+    *   linodeid
 
    linode_config_update
     Required Parameters:
@@ -334,33 +338,33 @@ Methods from the Linode API
 
     Optional Parameters:
 
-    *   helper_disableupdatedb
-
-    *   rootdevicero
-
     *   comments
-
-    *   rootdevicenum
-
-    *   rootdevicecustom
-
-    *   kernelid
-
-    *   runlevel
-
-    *   ramlimit
 
     *   devtmpfs_automount
 
+    *   disklist
+
     *   helper_depmod
 
-    *   linodeid
+    *   helper_disableupdatedb
 
     *   helper_xen
 
-    *   disklist
+    *   kernelid
 
     *   label
+
+    *   linodeid
+
+    *   ramlimit
+
+    *   rootdevicecustom
+
+    *   rootdevicenum
+
+    *   rootdevicero
+
+    *   runlevel
 
    linode_config_list
     Required Parameters:
@@ -376,11 +380,45 @@ Methods from the Linode API
 
     *   label
 
+    *   linodeid
+
     *   size
 
     *   type
 
+   linode_disk_createfromstackscript
+    Required Parameters:
+
+    *   distributionid
+
+    *   label
+
     *   linodeid
+
+    *   rootpass
+
+    *   size
+
+    *   stackscriptid
+
+    *   stackscriptudfresponses
+
+   linode_disk_createfromdistribution
+    Required Parameters:
+
+    *   distributionid
+
+    *   label
+
+    *   linodeid
+
+    *   rootpass
+
+    *   size
+
+    Optional Parameters:
+
+    *   rootsshkey
 
    linode_disk_resize
     Required Parameters:
@@ -390,23 +428,6 @@ Methods from the Linode API
     *   linodeid
 
     *   size
-
-   linode_disk_createfromdistribution
-    Required Parameters:
-
-    *   rootpass
-
-    *   linodeid
-
-    *   distributionid
-
-    *   size
-
-    *   label
-
-    Optional Parameters:
-
-    *   rootsshkey
 
    linode_disk_duplicate
     Required Parameters:
@@ -418,9 +439,9 @@ Methods from the Linode API
    linode_disk_delete
     Required Parameters:
 
-    *   linodeid
-
     *   diskid
+
+    *   linodeid
 
    linode_disk_update
     Required Parameters:
@@ -429,11 +450,11 @@ Methods from the Linode API
 
     Optional Parameters:
 
-    *   linodeid
+    *   isreadonly
 
     *   label
 
-    *   isreadonly
+    *   linodeid
 
    linode_disk_list
     Required Parameters:
@@ -443,23 +464,6 @@ Methods from the Linode API
     Optional Parameters:
 
     *   diskid
-
-   linode_disk_createfromstackscript
-    Required Parameters:
-
-    *   size
-
-    *   label
-
-    *   linodeid
-
-    *   stackscriptid
-
-    *   distributionid
-
-    *   rootpass
-
-    *   stackscriptudfresponses
 
    linode_ip_addprivate
     Required Parameters:
@@ -482,26 +486,26 @@ Methods from the Linode API
 
     Optional Parameters:
 
-    *   pendingonly
-
     *   jobid
+
+    *   pendingonly
 
    stackscript_create
     Required Parameters:
 
-    *   label
-
     *   distributionidlist
+
+    *   label
 
     *   script
 
     Optional Parameters:
 
-    *   rev_note
-
     *   description
 
     *   ispublic
+
+    *   rev_note
 
    stackscript_delete
     Required Parameters:
@@ -515,17 +519,17 @@ Methods from the Linode API
 
     Optional Parameters:
 
-    *   distributionidlist
-
     *   description
 
-    *   script
+    *   distributionidlist
 
     *   ispublic
 
+    *   label
+
     *   rev_note
 
-    *   label
+    *   script
 
    stackscript_list
     Optional Parameters:
@@ -539,25 +543,29 @@ Methods from the Linode API
 
     Optional Parameters:
 
-    *   protocol
+    *   algorithm
 
     *   check
 
-    *   check_path
-
-    *   check_interval
-
-    *   algorithm
-
     *   check_attempts
-
-    *   stickiness
-
-    *   check_timeout
 
     *   check_body
 
+    *   check_interval
+
+    *   check_path
+
+    *   check_timeout
+
     *   port
+
+    *   protocol
+
+    *   ssl_cert
+
+    *   ssl_key
+
+    *   stickiness
 
    nodebalancer_config_delete
     Required Parameters:
@@ -571,25 +579,29 @@ Methods from the Linode API
 
     Optional Parameters:
 
-    *   check_body
-
-    *   stickiness
-
-    *   check_attempts
-
-    *   check_timeout
-
     *   algorithm
-
-    *   port
 
     *   check
 
-    *   protocol
+    *   check_attempts
+
+    *   check_body
+
+    *   check_interval
 
     *   check_path
 
-    *   check_interval
+    *   check_timeout
+
+    *   port
+
+    *   protocol
+
+    *   ssl_cert
+
+    *   ssl_key
+
+    *   stickiness
 
    nodebalancer_config_list
     Required Parameters:
@@ -603,11 +615,11 @@ Methods from the Linode API
    nodebalancer_node_create
     Required Parameters:
 
-    *   label
-
     *   address
 
     *   configid
+
+    *   label
 
     Optional Parameters:
 
@@ -627,11 +639,11 @@ Methods from the Linode API
 
     Optional Parameters:
 
-    *   mode
+    *   address
 
     *   label
 
-    *   address
+    *   mode
 
     *   weight
 
@@ -647,9 +659,9 @@ Methods from the Linode API
    user_getapikey
     Required Parameters:
 
-    *   username
-
     *   password
+
+    *   username
 
 Additional Helper Methods
     These methods are deprecated and will be going away.
