@@ -12,6 +12,10 @@ SYNOPSIS
     otherwise the same. For additional information see
     <http://www.linode.com/api/>
 
+Constructor
+    For documentation of possible arguments to the constructor, see
+    WebService::Linode::Base.
+
 Methods from the Linode API
    avail_stackscripts
     Optional Parameters:
@@ -182,9 +186,11 @@ Methods from the Linode API
 
     *   datacenterid
 
-    *   paymentterm
-
     *   planid
+
+    Optional Parameters:
+
+    *   paymentterm
 
    linode_reboot
     Required Parameters:
@@ -223,9 +229,11 @@ Methods from the Linode API
 
     *   linodeid
 
-    *   paymentterm
-
     *   planid
+
+    Optional Parameters:
+
+    *   paymentterm
 
    linode_shutdown
     Required Parameters:
@@ -662,15 +670,6 @@ Methods from the Linode API
     *   password
 
     *   username
-
-Additional Helper Methods
-    These methods are deprecated and will be going away.
-
-   getDomainIDbyName( domain => 'example.com' )
-    Returns the ID for a domain given the name.
-
-   getDomainResourceIDbyName( domainid => 242, name => 'www')
-    Takes a record name and domainid or domain and returns the resourceid.
 
 AUTHORS
     *   Michael Greb, "<mgreb@linode.com>"

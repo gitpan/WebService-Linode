@@ -9,7 +9,7 @@ use Carp;
 use List::Util qw(first);
 use WebService::Linode::Base;
 
-our $VERSION = '0.16';
+our $VERSION = '0.17';
 our @ISA     = ("WebService::Linode::Base");
 our $AUTOLOAD;
 
@@ -57,8 +57,8 @@ my %validation = (
     },
     linode => {
         boot => [ ['linodeid'], ['configid'] ],
-        clone => [ [qw( datacenterid linodeid paymentterm planid )], [] ],
-        create => [ [qw( datacenterid paymentterm planid )], [] ],
+        clone => [ [qw( datacenterid linodeid planid )], [ 'paymentterm' ] ],
+        create => [ [qw( datacenterid planid )], [ 'paymentterm' ] ],
         delete => [ ['linodeid'], ['skipchecks'] ],
         list   => [ [],           ['linodeid'] ],
         mutate => [ ['linodeid'], [] ],
@@ -196,37 +196,6 @@ sub AUTOLOAD {
     croak "Undefined subroutine \&$AUTOLOAD called";
 }
 
-sub getDomainIDbyName {
-    carp "WebService::Linode::getDomainIDbyName() is deprecated and going away.";
-    my ( $self, $name ) = @_;
-    foreach my $domain ( @{ $self->domain_list() } ) {
-        return $domain->{domainid} if $domain->{domain} eq $name;
-    }
-    return;
-}
-
-sub getDomainResourceIDbyName {
-    carp "WebService::Linode::getDomainResourceIDbyName() is deprecated and going away.";
-    my ( $self, %args ) = @_;
-    $self->_debug( 10, 'getResourceIDbyName called' );
-
-    my $domainid = $args{domainid};
-    if ( !exists( $args{domainid} ) && exists( $args{domain} ) ) {
-        $domainid = $self->getDomainIDbyName( $args{domain} );
-    }
-
-    if ( !( defined($domainid) && exists( $args{name} ) ) ) {
-        $self->_error( -1,
-            'Must pass domain or domainid and (resource) name to getResourceIDbyName'
-        );
-        return;
-    }
-
-    for my $rr ( @{ $self->domain_resource_list( domainid => $domainid ) } ) {
-        return $rr->{resourceid} if $rr->{name} eq $args{name};
-    }
-}
-
 'mmm, cake';
 __END__
 
@@ -244,6 +213,11 @@ This module implements the Linode.com api methods.  Linode methods have had
 dots replaced with underscores to generate the perl method name.  All keys
 and parameters have been lower cased but returned data remains otherwise the
 same.  For additional information see L<http://www.linode.com/api/>
+
+=head1 Constructor
+
+For documentation of possible arguments to the constructor, see
+L<WebService::Linode::Base>.
 
 =head1 Methods from the Linode API
 
@@ -505,9 +479,15 @@ Required Parameters:
 
 =item * datacenterid
 
-=item * paymentterm
-
 =item * planid
+
+=back
+
+Optional Parameters:
+
+=over 4
+
+=item * paymentterm
 
 =back
 
@@ -579,9 +559,15 @@ Required Parameters:
 
 =item * linodeid
 
-=item * paymentterm
-
 =item * planid
+
+=back
+
+Optional Parameters:
+
+=over 4
+
+=item * paymentterm
 
 =back
 
@@ -1252,18 +1238,6 @@ Required Parameters:
 =item * username
 
 =back
-
-=head1 Additional Helper Methods
-
-These methods are deprecated and will be going away.
-
-=head3 getDomainIDbyName( domain => 'example.com' )
-
-Returns the ID for a domain given the name.
-
-=head3 getDomainResourceIDbyName( domainid => 242, name => 'www')
-
-Takes a record name and domainid or domain and returns the resourceid.
 
 =head1 AUTHORS
 
