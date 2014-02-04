@@ -671,6 +671,14 @@ Methods from the Linode API
 
     *   username
 
+    Optional Parameters:
+
+    *   expires
+
+    *   label
+
+    *   token
+
 AUTHORS
     *   Michael Greb, "<mgreb@linode.com>"
 
