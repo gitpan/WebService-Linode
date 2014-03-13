@@ -23,13 +23,14 @@ no_index:
     - examples
 requires:
   JSON: '2.00'
+  LWP: '0'
   LWP::Protocol::https: '0'
   perl: '5.008005'
 resources:
   bugtracker: https://github.com/mikegrb/WebService-Linode/issues
   homepage: https://github.com/mikegrb/WebService-Linode
   repository: https://github.com/mikegrb/WebService-Linode.git
-version: '0.19'
+version: '0.20'
 x_contributors:
   - 'Neil Bowers <neil@bowers.com>'
   - 'Stan Schwertly <stan@schwertly.com>'

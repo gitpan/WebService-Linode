@@ -473,7 +473,23 @@ Methods from the Linode API
 
     *   diskid
 
+   linode_ip_swap
+    Required Parameters:
+
+    *   ipaddressid
+
+    Optional Parameters:
+
+    *   tolinodeid
+
+    *   withipaddressid
+
    linode_ip_addprivate
+    Required Parameters:
+
+    *   linodeid
+
+   linode_ip_addpublic
     Required Parameters:
 
     *   linodeid
@@ -579,6 +595,8 @@ Methods from the Linode API
     Required Parameters:
 
     *   configid
+
+    *   nodebalancerid
 
    nodebalancer_config_update
     Required Parameters:

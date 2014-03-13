@@ -1,5 +1,13 @@
 Revision history for Perl module WebService::Linode
 
+0.20  2014-03-13 11:42:49 EDT
+    - support for adding new private and public IPs to a Linode
+    - support for swapping/moving an IP between Linodes
+    - moar deprecated WebService::Linode::DNS
+      - all methods carp
+      - most of POD replaced, points to WebService::Linode
+    - add LWP to cpanfile for CPANTS
+
 0.19  2014-02-09 00:28:23 EST
     - depend on just LWP::Protocol::https instead of LWP::UserAgent,
       Crypt::SSLeay, & Mozilla::CA, thanks Christopher Meng (cicku)
