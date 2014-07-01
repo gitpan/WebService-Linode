@@ -17,15 +17,7 @@ Constructor
     WebService::Linode::Base.
 
 Methods from the Linode API
-   avail_stackscripts
-    Optional Parameters:
-
-    *   distributionid
-
-    *   distributionvendor
-
-    *   keywords
-
+   avail_datacenters
    avail_kernels
     Optional Parameters:
 
@@ -38,11 +30,25 @@ Methods from the Linode API
 
     *   planid
 
-   avail_datacenters
+   avail_nodebalancers
+   avail_stackscripts
+    Optional Parameters:
+
+    *   distributionid
+
+    *   distributionvendor
+
+    *   keywords
+
    avail_distributions
     Optional Parameters:
 
     *   distributionid
+
+   domain_delete
+    Required Parameters:
+
+    *   domainid
 
    domain_create
     Required Parameters:
@@ -72,11 +78,6 @@ Methods from the Linode API
     *   status
 
     *   ttl_sec
-
-   domain_delete
-    Required Parameters:
-
-    *   domainid
 
    domain_update
     Required Parameters:
@@ -114,6 +115,13 @@ Methods from the Linode API
 
     *   domainid
 
+   domain_resource_delete
+    Required Parameters:
+
+    *   domainid
+
+    *   resourceid
+
    domain_resource_create
     Required Parameters:
 
@@ -137,10 +145,12 @@ Methods from the Linode API
 
     *   weight
 
-   domain_resource_delete
+   domain_resource_list
     Required Parameters:
 
     *   domainid
+
+    Optional Parameters:
 
     *   resourceid
 
@@ -167,75 +177,7 @@ Methods from the Linode API
 
     *   weight
 
-   domain_resource_list
-    Required Parameters:
-
-    *   domainid
-
-    Optional Parameters:
-
-    *   resourceid
-
-   linode_mutate
-    Required Parameters:
-
-    *   linodeid
-
-   linode_create
-    Required Parameters:
-
-    *   datacenterid
-
-    *   planid
-
-    Optional Parameters:
-
-    *   paymentterm
-
-   linode_reboot
-    Required Parameters:
-
-    *   linodeid
-
-    Optional Parameters:
-
-    *   configid
-
    linode_webconsoletoken
-    Required Parameters:
-
-    *   linodeid
-
-   linode_boot
-    Required Parameters:
-
-    *   linodeid
-
-    Optional Parameters:
-
-    *   configid
-
-   linode_resize
-    Required Parameters:
-
-    *   linodeid
-
-    *   planid
-
-   linode_clone
-    Required Parameters:
-
-    *   datacenterid
-
-    *   linodeid
-
-    *   planid
-
-    Optional Parameters:
-
-    *   paymentterm
-
-   linode_shutdown
     Required Parameters:
 
     *   linodeid
@@ -248,6 +190,31 @@ Methods from the Linode API
     Optional Parameters:
 
     *   skipchecks
+
+   linode_boot
+    Required Parameters:
+
+    *   linodeid
+
+    Optional Parameters:
+
+    *   configid
+
+   linode_create
+    Required Parameters:
+
+    *   datacenterid
+
+    *   planid
+
+    Optional Parameters:
+
+    *   paymentterm
+
+   linode_shutdown
+    Required Parameters:
+
+    *   linodeid
 
    linode_update
     Required Parameters:
@@ -294,8 +261,49 @@ Methods from the Linode API
 
     *   watchdog
 
+   linode_resize
+    Required Parameters:
+
+    *   linodeid
+
+    *   planid
+
+   linode_mutate
+    Required Parameters:
+
+    *   linodeid
+
+   linode_clone
+    Required Parameters:
+
+    *   datacenterid
+
+    *   linodeid
+
+    *   planid
+
+    Optional Parameters:
+
+    *   paymentterm
+
    linode_list
     Optional Parameters:
+
+    *   linodeid
+
+   linode_reboot
+    Required Parameters:
+
+    *   linodeid
+
+    Optional Parameters:
+
+    *   configid
+
+   linode_config_delete
+    Required Parameters:
+
+    *   configid
 
     *   linodeid
 
@@ -331,13 +339,6 @@ Methods from the Linode API
     *   rootdevicero
 
     *   runlevel
-
-   linode_config_delete
-    Required Parameters:
-
-    *   configid
-
-    *   linodeid
 
    linode_config_update
     Required Parameters:
@@ -383,33 +384,12 @@ Methods from the Linode API
 
     *   configid
 
-   linode_disk_create
+   linode_disk_duplicate
     Required Parameters:
 
-    *   label
+    *   diskid
 
     *   linodeid
-
-    *   size
-
-    *   type
-
-   linode_disk_createfromstackscript
-    Required Parameters:
-
-    *   distributionid
-
-    *   label
-
-    *   linodeid
-
-    *   rootpass
-
-    *   size
-
-    *   stackscriptid
-
-    *   stackscriptudfresponses
 
    linode_disk_createfromdistribution
     Required Parameters:
@@ -428,6 +408,64 @@ Methods from the Linode API
 
     *   rootsshkey
 
+   linode_disk_list
+    Required Parameters:
+
+    *   linodeid
+
+    Optional Parameters:
+
+    *   diskid
+
+   linode_disk_create
+    Required Parameters:
+
+    *   label
+
+    *   linodeid
+
+    *   size
+
+    *   type
+
+    Optional Parameters:
+
+    *   fromdistributionid
+
+    *   isreadonly
+
+    *   rootpass
+
+    *   rootsshkey
+
+   linode_disk_delete
+    Required Parameters:
+
+    *   diskid
+
+    *   linodeid
+
+   linode_disk_createfromstackscript
+    Required Parameters:
+
+    *   distributionid
+
+    *   label
+
+    *   linodeid
+
+    *   rootpass
+
+    *   size
+
+    *   stackscriptid
+
+    *   stackscriptudfresponses
+
+    Optional Parameters:
+
+    *   rootsshkey
+
    linode_disk_resize
     Required Parameters:
 
@@ -436,20 +474,6 @@ Methods from the Linode API
     *   linodeid
 
     *   size
-
-   linode_disk_duplicate
-    Required Parameters:
-
-    *   diskid
-
-    *   linodeid
-
-   linode_disk_delete
-    Required Parameters:
-
-    *   diskid
-
-    *   linodeid
 
    linode_disk_update
     Required Parameters:
@@ -464,32 +488,19 @@ Methods from the Linode API
 
     *   linodeid
 
-   linode_disk_list
+   linode_ip_addpublic
     Required Parameters:
 
     *   linodeid
 
-    Optional Parameters:
-
-    *   diskid
-
-   linode_ip_swap
+   linode_ip_setrdns
     Required Parameters:
+
+    *   hostname
 
     *   ipaddressid
 
-    Optional Parameters:
-
-    *   tolinodeid
-
-    *   withipaddressid
-
    linode_ip_addprivate
-    Required Parameters:
-
-    *   linodeid
-
-   linode_ip_addpublic
     Required Parameters:
 
     *   linodeid
@@ -503,6 +514,17 @@ Methods from the Linode API
 
     *   ipaddressid
 
+   linode_ip_swap
+    Required Parameters:
+
+    *   ipaddressid
+
+    Optional Parameters:
+
+    *   tolinodeid
+
+    *   withipaddressid
+
    linode_job_list
     Required Parameters:
 
@@ -513,28 +535,6 @@ Methods from the Linode API
     *   jobid
 
     *   pendingonly
-
-   stackscript_create
-    Required Parameters:
-
-    *   distributionidlist
-
-    *   label
-
-    *   script
-
-    Optional Parameters:
-
-    *   description
-
-    *   ispublic
-
-    *   rev_note
-
-   stackscript_delete
-    Required Parameters:
-
-    *   stackscriptid
 
    stackscript_update
     Required Parameters:
@@ -560,36 +560,27 @@ Methods from the Linode API
 
     *   stackscriptid
 
-   nodebalancer_config_create
+   stackscript_create
     Required Parameters:
 
-    *   nodebalancerid
+    *   distributionidlist
+
+    *   label
+
+    *   script
 
     Optional Parameters:
 
-    *   algorithm
+    *   description
 
-    *   check
+    *   ispublic
 
-    *   check_attempts
+    *   rev_note
 
-    *   check_body
+   stackscript_delete
+    Required Parameters:
 
-    *   check_interval
-
-    *   check_path
-
-    *   check_timeout
-
-    *   port
-
-    *   protocol
-
-    *   ssl_cert
-
-    *   ssl_key
-
-    *   stickiness
+    *   stackscriptid
 
    nodebalancer_config_delete
     Required Parameters:
@@ -598,10 +589,10 @@ Methods from the Linode API
 
     *   nodebalancerid
 
-   nodebalancer_config_update
+   nodebalancer_config_create
     Required Parameters:
 
-    *   configid
+    *   nodebalancerid
 
     Optional Parameters:
 
@@ -638,6 +629,42 @@ Methods from the Linode API
 
     *   configid
 
+   nodebalancer_config_update
+    Required Parameters:
+
+    *   configid
+
+    Optional Parameters:
+
+    *   algorithm
+
+    *   check
+
+    *   check_attempts
+
+    *   check_body
+
+    *   check_interval
+
+    *   check_path
+
+    *   check_timeout
+
+    *   port
+
+    *   protocol
+
+    *   ssl_cert
+
+    *   ssl_key
+
+    *   stickiness
+
+   nodebalancer_node_delete
+    Required Parameters:
+
+    *   nodeid
+
    nodebalancer_node_create
     Required Parameters:
 
@@ -652,11 +679,6 @@ Methods from the Linode API
     *   mode
 
     *   weight
-
-   nodebalancer_node_delete
-    Required Parameters:
-
-    *   nodeid
 
    nodebalancer_node_update
     Required Parameters:
