@@ -18,6 +18,12 @@ Constructor
 
 Methods from the Linode API
    avail_datacenters
+   avail_nodebalancers
+   avail_distributions
+    Optional Parameters:
+
+    *   distributionid
+
    avail_kernels
     Optional Parameters:
 
@@ -30,7 +36,6 @@ Methods from the Linode API
 
     *   planid
 
-   avail_nodebalancers
    avail_stackscripts
     Optional Parameters:
 
@@ -40,44 +45,10 @@ Methods from the Linode API
 
     *   keywords
 
-   avail_distributions
+   domain_list
     Optional Parameters:
-
-    *   distributionid
-
-   domain_delete
-    Required Parameters:
 
     *   domainid
-
-   domain_create
-    Required Parameters:
-
-    *   domain
-
-    *   type
-
-    Optional Parameters:
-
-    *   axfr_ips
-
-    *   description
-
-    *   expire_sec
-
-    *   lpm_displaygroup
-
-    *   master_ips
-
-    *   refresh_sec
-
-    *   retry_sec
-
-    *   soa_email
-
-    *   status
-
-    *   ttl_sec
 
    domain_update
     Required Parameters:
@@ -110,10 +81,71 @@ Methods from the Linode API
 
     *   type
 
-   domain_list
+   domain_create
+    Required Parameters:
+
+    *   domain
+
+    *   type
+
+    Optional Parameters:
+
+    *   axfr_ips
+
+    *   description
+
+    *   expire_sec
+
+    *   lpm_displaygroup
+
+    *   master_ips
+
+    *   refresh_sec
+
+    *   retry_sec
+
+    *   soa_email
+
+    *   status
+
+    *   ttl_sec
+
+   domain_delete
+    Required Parameters:
+
+    *   domainid
+
+   domain_resource_update
+    Required Parameters:
+
+    *   resourceid
+
     Optional Parameters:
 
     *   domainid
+
+    *   name
+
+    *   port
+
+    *   priority
+
+    *   protocol
+
+    *   target
+
+    *   ttl_sec
+
+    *   weight
+
+   domain_resource_list
+    Required Parameters:
+
+    *   domainid
+
+    Optional Parameters:
+
+    *   resourceid
 
    domain_resource_delete
     Required Parameters:
@@ -145,51 +177,22 @@ Methods from the Linode API
 
     *   weight
 
-   domain_resource_list
-    Required Parameters:
-
-    *   domainid
-
-    Optional Parameters:
-
-    *   resourceid
-
-   domain_resource_update
-    Required Parameters:
-
-    *   resourceid
-
-    Optional Parameters:
-
-    *   domainid
-
-    *   name
-
-    *   port
-
-    *   priority
-
-    *   protocol
-
-    *   target
-
-    *   ttl_sec
-
-    *   weight
-
-   linode_webconsoletoken
+   linode_resize
     Required Parameters:
 
     *   linodeid
 
-   linode_delete
-    Required Parameters:
+    *   planid
+
+   linode_list
+    Optional Parameters:
 
     *   linodeid
 
-    Optional Parameters:
+   linode_mutate
+    Required Parameters:
 
-    *   skipchecks
+    *   linodeid
 
    linode_boot
     Required Parameters:
@@ -211,10 +214,18 @@ Methods from the Linode API
 
     *   paymentterm
 
-   linode_shutdown
+   linode_clone
     Required Parameters:
 
+    *   datacenterid
+
     *   linodeid
+
+    *   planid
+
+    Optional Parameters:
+
+    *   paymentterm
 
    linode_update
     Required Parameters:
@@ -261,33 +272,8 @@ Methods from the Linode API
 
     *   watchdog
 
-   linode_resize
+   linode_webconsoletoken
     Required Parameters:
-
-    *   linodeid
-
-    *   planid
-
-   linode_mutate
-    Required Parameters:
-
-    *   linodeid
-
-   linode_clone
-    Required Parameters:
-
-    *   datacenterid
-
-    *   linodeid
-
-    *   planid
-
-    Optional Parameters:
-
-    *   paymentterm
-
-   linode_list
-    Optional Parameters:
 
     *   linodeid
 
@@ -299,6 +285,20 @@ Methods from the Linode API
     Optional Parameters:
 
     *   configid
+
+   linode_shutdown
+    Required Parameters:
+
+    *   linodeid
+
+   linode_delete
+    Required Parameters:
+
+    *   linodeid
+
+    Optional Parameters:
+
+    *   skipchecks
 
    linode_config_delete
     Required Parameters:
@@ -384,6 +384,21 @@ Methods from the Linode API
 
     *   configid
 
+   linode_disk_createfromimage
+    Required Parameters:
+
+    *   imageid
+
+    *   linodeid
+
+    Optional Parameters:
+
+    *   rootpass
+
+    *   rootsshkey
+
+    *   size
+
    linode_disk_duplicate
     Required Parameters:
 
@@ -391,57 +406,16 @@ Methods from the Linode API
 
     *   linodeid
 
-   linode_disk_createfromdistribution
+   linode_disk_update
     Required Parameters:
-
-    *   distributionid
-
-    *   label
-
-    *   linodeid
-
-    *   rootpass
-
-    *   size
-
-    Optional Parameters:
-
-    *   rootsshkey
-
-   linode_disk_list
-    Required Parameters:
-
-    *   linodeid
-
-    Optional Parameters:
 
     *   diskid
 
-   linode_disk_create
-    Required Parameters:
-
-    *   label
-
-    *   linodeid
-
-    *   size
-
-    *   type
-
     Optional Parameters:
-
-    *   fromdistributionid
 
     *   isreadonly
 
-    *   rootpass
-
-    *   rootsshkey
-
-   linode_disk_delete
-    Required Parameters:
-
-    *   diskid
+    *   label
 
     *   linodeid
 
@@ -466,6 +440,26 @@ Methods from the Linode API
 
     *   rootsshkey
 
+   linode_disk_imagize
+    Required Parameters:
+
+    *   diskid
+
+    *   linodeid
+
+    Optional Parameters:
+
+    *   description
+
+    *   label
+
+   linode_disk_delete
+    Required Parameters:
+
+    *   diskid
+
+    *   linodeid
+
    linode_disk_resize
     Required Parameters:
 
@@ -475,23 +469,52 @@ Methods from the Linode API
 
     *   size
 
-   linode_disk_update
+   linode_disk_list
     Required Parameters:
 
-    *   diskid
+    *   linodeid
 
     Optional Parameters:
 
-    *   isreadonly
+    *   diskid
+
+   linode_disk_createfromdistribution
+    Required Parameters:
+
+    *   distributionid
 
     *   label
 
     *   linodeid
 
-   linode_ip_addpublic
+    *   rootpass
+
+    *   size
+
+    Optional Parameters:
+
+    *   rootsshkey
+
+   linode_disk_create
     Required Parameters:
 
+    *   label
+
     *   linodeid
+
+    *   size
+
+    *   type
+
+    Optional Parameters:
+
+    *   fromdistributionid
+
+    *   isreadonly
+
+    *   rootpass
+
+    *   rootsshkey
 
    linode_ip_setrdns
     Required Parameters:
@@ -499,6 +522,17 @@ Methods from the Linode API
     *   hostname
 
     *   ipaddressid
+
+   linode_ip_swap
+    Required Parameters:
+
+    *   ipaddressid
+
+    Optional Parameters:
+
+    *   tolinodeid
+
+    *   withipaddressid
 
    linode_ip_addprivate
     Required Parameters:
@@ -514,16 +548,10 @@ Methods from the Linode API
 
     *   ipaddressid
 
-   linode_ip_swap
+   linode_ip_addpublic
     Required Parameters:
 
-    *   ipaddressid
-
-    Optional Parameters:
-
-    *   tolinodeid
-
-    *   withipaddressid
+    *   linodeid
 
    linode_job_list
     Required Parameters:
@@ -535,6 +563,11 @@ Methods from the Linode API
     *   jobid
 
     *   pendingonly
+
+   stackscript_list
+    Optional Parameters:
+
+    *   stackscriptid
 
    stackscript_update
     Required Parameters:
@@ -554,11 +587,6 @@ Methods from the Linode API
     *   rev_note
 
     *   script
-
-   stackscript_list
-    Optional Parameters:
-
-    *   stackscriptid
 
    stackscript_create
     Required Parameters:
@@ -620,15 +648,6 @@ Methods from the Linode API
 
     *   stickiness
 
-   nodebalancer_config_list
-    Required Parameters:
-
-    *   nodebalancerid
-
-    Optional Parameters:
-
-    *   configid
-
    nodebalancer_config_update
     Required Parameters:
 
@@ -660,10 +679,14 @@ Methods from the Linode API
 
     *   stickiness
 
-   nodebalancer_node_delete
+   nodebalancer_config_list
     Required Parameters:
 
-    *   nodeid
+    *   nodebalancerid
+
+    Optional Parameters:
+
+    *   configid
 
    nodebalancer_node_create
     Required Parameters:
@@ -680,6 +703,20 @@ Methods from the Linode API
 
     *   weight
 
+   nodebalancer_node_delete
+    Required Parameters:
+
+    *   nodeid
+
+   nodebalancer_node_list
+    Required Parameters:
+
+    *   configid
+
+    Optional Parameters:
+
+    *   nodeid
+
    nodebalancer_node_update
     Required Parameters:
 
@@ -694,15 +731,6 @@ Methods from the Linode API
     *   mode
 
     *   weight
-
-   nodebalancer_node_list
-    Required Parameters:
-
-    *   configid
-
-    Optional Parameters:
-
-    *   nodeid
 
    user_getapikey
     Required Parameters:
@@ -725,7 +753,7 @@ AUTHORS
     *   Stan "The Man" Schwertly "<stan@linode.com>"
 
 COPYRIGHT & LICENSE
-    Copyright 2008-2009 Linode, LLC, all rights reserved.
+    Copyright 2008-2014 Michael Greb, all rights reserved.
 
     This program is free software; you can redistribute it and/or modify it
     under the same terms as Perl itself.

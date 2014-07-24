@@ -30,7 +30,7 @@ resources:
   bugtracker: https://github.com/mikegrb/WebService-Linode/issues
   homepage: https://github.com/mikegrb/WebService-Linode
   repository: https://github.com/mikegrb/WebService-Linode.git
-version: '0.21'
+version: '0.22'
 x_contributors:
   - 'Neil Bowers <neil@bowers.com>'
   - 'Stan Schwertly <stan@schwertly.com>'
