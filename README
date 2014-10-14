@@ -16,6 +16,23 @@ Constructor
     For documentation of possible arguments to the constructor, see
     WebService::Linode::Base.
 
+Batch requests
+    Each of the Linode API methods below may optionally be prefixed with
+    QUEUE_ to add that request to a queue to be processed later in one or
+    more batch requests which can be processed by calling
+    send_queued_requests. For example:
+
+        my @linode_ids = () # Get your linode ids through normal methods
+        my @responses = map { $api->linode_ip_list( linodeid=>$_ ) } @linode_ids;
+
+    Can be reduced to a single request:
+
+        my @linode_ids = () # Get your linode ids through normal methods
+        $api->QUEUE_linode_ip_list( linodeid=>$_ ) for @linode_ids;
+        my @responses = $api->send_queued_requests; # One api request
+
+    See WebService::Linode::Base for additional queue management methods.
+
 Methods from the Linode API
    avail_datacenters
    avail_nodebalancers
@@ -748,9 +765,9 @@ Methods from the Linode API
     *   token
 
 AUTHORS
-    *   Michael Greb, "<mgreb@linode.com>"
+    *   Michael Greb, "<michael@thegrebs.com>"
 
-    *   Stan "The Man" Schwertly "<stan@linode.com>"
+    *   Stan "The Man" Schwertly "<stan@schwertly.com>"
 
 COPYRIGHT & LICENSE
     Copyright 2008-2014 Michael Greb, all rights reserved.

@@ -9,7 +9,7 @@ use Carp;
 use List::Util qw(first);
 use WebService::Linode::Base;
 
-our $VERSION = '0.22';
+our $VERSION = '0.23';
 our @ISA     = ("WebService::Linode::Base");
 our $AUTOLOAD;
 
@@ -123,8 +123,8 @@ my %validation = (
 sub AUTOLOAD {
     ( my $name = $AUTOLOAD ) =~ s/.+:://;
     return if $name eq 'DESTROY';
-    if ( $name =~ m/^(.*?)_([^_]+)$/ ) {
-        my ( $thing, $action ) = ( $1, $2 );
+    if ( $name =~ m/^(QUEUE_)?(.*?)_([^_]+)$/ ) {
+        my ( $queue, $thing, $action ) = ( $1, $2, $3 );
         if ( exists $validation{$thing} && exists $validation{$thing}{$action} )
         {   no strict 'refs';
             *{$AUTOLOAD} = sub {
@@ -145,6 +145,7 @@ sub AUTOLOAD {
                     }
                 }
                 ( my $apiAction = "${thing}_${action}" ) =~ s/_/./g;
+                return $self->queue_request( api_action => $apiAction, %args ) if $queue;
                 my $data = $self->do_request( api_action => $apiAction, %args );
                 return [ map { $self->_lc_keys($_) } @$data ]
                     if ref $data eq 'ARRAY';
@@ -160,6 +161,29 @@ sub AUTOLOAD {
         return;
     }
     croak "Undefined subroutine \&$AUTOLOAD called";
+}
+
+sub send_queued_requests {
+    my $self = shift;
+    my $items = shift;
+
+    if ( $self->list_queue == 0 ) {
+        $self->_error( -1, "No queued items to send" );
+        return;
+    }
+
+    my @responses;
+    for my $data ( $self->process_queue( $items ) ) {
+        if ( ref $data eq 'ARRAY' ) {
+            push @responses, [ map { $self->_lc_keys($_) } @$data ];
+        } elsif( ref $data eq 'HASH' ) {
+            push @responses, $self->_lc_keys($data);
+        } else {
+            push @responses, $data;
+        }
+    }
+
+    return @responses;
 }
 
 'mmm, cake';
@@ -184,6 +208,24 @@ same.  For additional information see L<http://www.linode.com/api/>
 
 For documentation of possible arguments to the constructor, see
 L<WebService::Linode::Base>.
+
+=head1 Batch requests
+
+Each of the Linode API methods below may optionally be prefixed with QUEUE_
+to add that request to a queue to be processed later in one or more batch
+requests which can be processed by calling send_queued_requests.
+For example:
+
+    my @linode_ids = () # Get your linode ids through normal methods
+    my @responses = map { $api->linode_ip_list( linodeid=>$_ ) } @linode_ids;
+
+Can be reduced to a single request:
+
+    my @linode_ids = () # Get your linode ids through normal methods
+    $api->QUEUE_linode_ip_list( linodeid=>$_ ) for @linode_ids;
+    my @responses = $api->send_queued_requests; # One api request
+
+See L<WebService::Linode::Base> for additional queue management methods.
 
 =head1 Methods from the Linode API
 
@@ -1335,9 +1377,9 @@ Optional Parameters:
 
 =over
 
-=item * Michael Greb, C<< <mgreb@linode.com> >>
+=item * Michael Greb, C<< <michael@thegrebs.com> >>
 
-=item * Stan "The Man" Schwertly C<< <stan@linode.com> >>
+=item * Stan "The Man" Schwertly C<< <stan@schwertly.com> >>
 
 =back
 
