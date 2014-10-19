@@ -33,6 +33,9 @@ Batch requests
 
     See WebService::Linode::Base for additional queue management methods.
 
+   send_queued_requests
+    Send queued batch requests, returns list of responses.
+
 Methods from the Linode API
    avail_datacenters
    avail_nodebalancers

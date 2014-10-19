@@ -30,7 +30,7 @@ resources:
   bugtracker: https://github.com/mikegrb/WebService-Linode/issues
   homepage: https://github.com/mikegrb/WebService-Linode
   repository: https://github.com/mikegrb/WebService-Linode.git
-version: '0.23'
+version: '0.24'
 x_contributors:
   - 'Kevan Benson <kentrak@gmail.com>'
   - 'Mike Greb <mikegrb@cpan.org>'

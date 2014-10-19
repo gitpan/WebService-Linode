@@ -9,7 +9,7 @@ use Carp;
 use List::Util qw(first);
 use WebService::Linode::Base;
 
-our $VERSION = '0.23';
+our $VERSION = '0.24';
 our @ISA     = ("WebService::Linode::Base");
 our $AUTOLOAD;
 
@@ -226,6 +226,10 @@ Can be reduced to a single request:
     my @responses = $api->send_queued_requests; # One api request
 
 See L<WebService::Linode::Base> for additional queue management methods.
+
+=head3 send_queued_requests
+
+Send queued batch requests, returns list of responses.
 
 =head1 Methods from the Linode API
 
