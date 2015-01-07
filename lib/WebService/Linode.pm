@@ -9,7 +9,7 @@ use Carp;
 use List::Util qw(first);
 use WebService::Linode::Base;
 
-our $VERSION = '0.24';
+our $VERSION = '0.26';
 our @ISA     = ("WebService::Linode::Base");
 our $AUTOLOAD;
 
@@ -46,6 +46,7 @@ my %validation = (
     image => {
         delete => [ [ 'imageid' ], [] ],
         list => [ [], [ 'imageid', 'pending' ] ],
+        update => [ [ 'imageid' ], [ 'label', 'description' ] ],
     },
     linode => {
         boot => [ [ 'linodeid' ], [ 'configid' ] ],
@@ -61,15 +62,15 @@ my %validation = (
         webconsoletoken => [ [ 'linodeid' ], [] ],
     },
     linode_config => {
-        create => [ [qw( kernelid label linodeid )], [qw( comments devtmpfs_automount disklist helper_depmod helper_disableupdatedb helper_xen ramlimit rootdevicecustom rootdevicenum rootdevicero runlevel )] ],
+        create => [ [qw( kernelid label linodeid )], [qw( comments devtmpfs_automount disklist helper_depmod helper_disableupdatedb helper_network helper_xen ramlimit rootdevicecustom rootdevicenum rootdevicero runlevel )] ],
         delete => [ [ 'configid', 'linodeid' ], [] ],
         list => [ [ 'linodeid' ], [ 'configid' ] ],
-        update => [ [ 'configid' ], [qw( comments devtmpfs_automount disklist helper_depmod helper_disableupdatedb helper_xen kernelid label linodeid ramlimit rootdevicecustom rootdevicenum rootdevicero runlevel )] ],
+        update => [ [ 'configid' ], [qw( comments devtmpfs_automount disklist helper_depmod helper_disableupdatedb helper_network helper_xen kernelid label linodeid ramlimit rootdevicecustom rootdevicenum rootdevicero runlevel )] ],
     },
     linode_disk => {
         create => [ [qw( label linodeid size type )], [qw( fromdistributionid isreadonly rootpass rootsshkey )] ],
         createfromdistribution => [ [qw( distributionid label linodeid rootpass size )], [ 'rootsshkey' ] ],
-        createfromimage => [ [ 'imageid', 'linodeid' ], [qw( rootpass rootsshkey size )] ],
+        createfromimage => [ [ 'imageid', 'linodeid' ], [qw( label rootpass rootsshkey size )] ],
         createfromstackscript => [ [qw( distributionid label linodeid rootpass size stackscriptid stackscriptudfresponses )], [ 'rootsshkey' ] ],
         delete => [ [ 'diskid', 'linodeid' ], [] ],
         duplicate => [ [ 'diskid', 'linodeid' ], [] ],
@@ -717,6 +718,8 @@ Optional Parameters:
 
 =item * helper_disableupdatedb
 
+=item * helper_network
+
 =item * helper_xen
 
 =item * ramlimit
@@ -754,6 +757,8 @@ Optional Parameters:
 =item * helper_depmod
 
 =item * helper_disableupdatedb
+
+=item * helper_network
 
 =item * helper_xen
 
@@ -808,6 +813,8 @@ Required Parameters:
 Optional Parameters:
 
 =over 4
+
+=item * label
 
 =item * rootpass
 
@@ -1090,6 +1097,48 @@ Optional Parameters:
 =item * jobid
 
 =item * pendingonly
+
+=back
+
+=head3 image_delete
+
+Required Parameters:
+
+=over 4
+
+=item * imageid
+
+=back
+
+=head3 image_list
+
+Optional Parameters:
+
+=over 4
+
+=item * imageid
+
+=item * pending
+
+=back
+
+=head3 image_update
+
+Required Parameters:
+
+=over 4
+
+=item * imageid
+
+=back
+
+Optional Parameters:
+
+=over 4
+
+=item * label
+
+=item * description
 
 =back
 

@@ -1,5 +1,13 @@
 Revision history for Perl module WebService::Linode
 
+0.26  2015-01-06 20:01:46 EST
+    - Patch from James Ottinger for image_update method 74816d
+
+0.25  2014-12-10 12:52:40 PST
+    - Patch from James Ottinger for additional Linode Images support a89bfc
+    - support for network helper in linode_config_create & linode_config_update
+      see <https://forum.linode.com/viewtopic.php?f=26&t=11469>
+
 0.24  2014-10-18 22:43:33 EDT
     - add explicit section to POD for send_queued_requests
     - Add Test::Pod::Coverage to cpanfile for develop
@@ -13,7 +21,7 @@ Revision history for Perl module WebService::Linode
 
 0.21  2014-07-01 13:02:10 EDT
     - new avail_nodebalancers and linode_ip_setrdns methods
-    - linode_disk_create now optionaly takes fromdistributionid, isreadonly,   
+    - linode_disk_create now optionaly takes fromdistributionid, isreadonly,
       rootpass, and rootsshkey
     - linode_disk_createfromstackscript now optionally takes rootsshkey
     - paymentterm is now optional for nodebalancer_create

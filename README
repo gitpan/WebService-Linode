@@ -348,6 +348,8 @@ Methods from the Linode API
 
     *   helper_disableupdatedb
 
+    *   helper_network
+
     *   helper_xen
 
     *   ramlimit
@@ -376,6 +378,8 @@ Methods from the Linode API
     *   helper_depmod
 
     *   helper_disableupdatedb
+
+    *   helper_network
 
     *   helper_xen
 
@@ -412,6 +416,8 @@ Methods from the Linode API
     *   linodeid
 
     Optional Parameters:
+
+    *   label
 
     *   rootpass
 
@@ -583,6 +589,29 @@ Methods from the Linode API
     *   jobid
 
     *   pendingonly
+
+   image_delete
+    Required Parameters:
+
+    *   imageid
+
+   image_list
+    Optional Parameters:
+
+    *   imageid
+
+    *   pending
+
+   image_update
+    Required Parameters:
+
+    *   imageid
+
+    Optional Parameters:
+
+    *   label
+
+    *   description
 
    stackscript_list
     Optional Parameters:
